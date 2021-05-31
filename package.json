@@ -10,7 +10,7 @@
     "remove": "sst remove"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.105.0",
+    "@aws-cdk/assert": "1.106.1",
     "@types/aws-lambda": "^8.10.70",
     "prettier": "^2.3.0"
   },
