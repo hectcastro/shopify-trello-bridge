@@ -15,7 +15,7 @@
     "prettier": "^2.3.0"
   },
   "dependencies": {
-    "@aws-cdk/core": "1.106.1",
+    "@aws-cdk/core": "1.105.0",
     "@serverless-stack/cli": "0.23.0",
     "@serverless-stack/resources": "0.23.0",
     "trello-node-api": "^0.0.9"
