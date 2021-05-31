@@ -12,7 +12,7 @@ function createTrelloCardName(order: Order): string {
 
 function createTrelloCardDesc(lineItems: LineItemsEntity[]): string {
   const trelloCardBody = lineItems.map((lineItem) => {
-    return `- ${lineItem.quantity} x ${lineItem.name}`;
+    return `- ${lineItem.quantity} x ${lineItem.name} (${lineItem.variant_title})`;
   });
 
   return trelloCardBody.join("\n");
