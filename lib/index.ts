@@ -6,8 +6,8 @@ export default function main(app: sst.App): void {
   app.setDefaultFunctionProps({
     runtime: "nodejs12.x",
     environment: {
-      TRELLO_API_KEY: process.env.TRELLO_API_KEY!,
-      TRELLO_OAUTH_TOKEN: process.env.TRELLO_OAUTH_TOKEN!,
+      TRELLO_API_KEY: process.env.TRELLO_API_KEY ?? "",
+      TRELLO_OAUTH_TOKEN: process.env.TRELLO_OAUTH_TOKEN ?? "",
     },
   });
 
