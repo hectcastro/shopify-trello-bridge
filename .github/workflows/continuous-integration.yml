@@ -25,7 +25,7 @@ jobs:
           key: node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: node-
 
-      - name: Install dependencies and test
+      - name: Install dependencies and build
         run: |
           npm ci
-          npx sst test
+          npx sst build
