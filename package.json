@@ -17,6 +17,6 @@
     "@aws-cdk/core": "1.105.0",
     "@serverless-stack/cli": "0.23.0",
     "@serverless-stack/resources": "0.23.0",
-    "trello-node-api": "^0.0.9"
+    "axios": "^0.21.1"
   }
 }

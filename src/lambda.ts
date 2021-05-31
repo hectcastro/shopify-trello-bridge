@@ -1,10 +1,14 @@
 import { APIGatewayProxyEventV2, APIGatewayProxyHandlerV2 } from "aws-lambda";
-import { LineItemsEntity, Order } from "./model/order";
-import TrelloNodeAPI from "trello-node-api";
+import { Order } from "./model/order";
+import axios from "axios";
 
-const Trello = new TrelloNodeAPI();
-Trello.setApiKey(process.env.TRELLO_API_KEY ?? "");
-Trello.setOauthToken(process.env.TRELLO_OAUTH_TOKEN ?? "");
+const client = axios.create({
+  baseURL: "https://api.trello.com/1",
+  params: {
+    key: process.env.TRELLO_API_KEY ?? "",
+    token: process.env.TRELLO_OAUTH_TOKEN ?? "",
+  },
+});
 
 function createTrelloCardName(order: Order): string {
   return `${order.name}: ${order.customer?.first_name} ${order.customer?.last_name} ($${order.total_price})`;
@@ -22,11 +26,14 @@ export const handler: APIGatewayProxyHandlerV2 = async (
   event: APIGatewayProxyEventV2
 ) => {
   const shopifyOrder: Order = JSON.parse(event.body ?? "");
-  await Trello.card.create({
+
+  // console.log(shopifyOrder);
+
+  const card = await client.post("/cards", {
+    idList: "60b3aa24124c475b5be6ca9c",
     name: createTrelloCardName(shopifyOrder),
     desc: createTrelloCardDesc(shopifyOrder.line_items || []),
     pos: "bottom",
-    idList: "60b3aa24124c475b5be6ca9c",
   });
 
   return {
