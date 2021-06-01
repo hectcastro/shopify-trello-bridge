@@ -14,27 +14,32 @@ function createTrelloCardName(order: Order): string {
   return `${order.name}: ${order.customer?.first_name} ${order.customer?.last_name} ($${order.total_price})`;
 }
 
-function createTrelloCardDesc(lineItems: LineItemsEntity[]): string {
-  const trelloCardBody = lineItems.map((lineItem) => {
-    return `- ${lineItem.quantity} x ${lineItem.name}`;
-  });
-
-  return trelloCardBody.join("\n");
-}
-
 export const handler: APIGatewayProxyHandlerV2 = async (
   event: APIGatewayProxyEventV2
 ) => {
   const shopifyOrder: Order = JSON.parse(event.body ?? "");
 
-  // console.log(shopifyOrder);
-
   const card = await client.post("/cards", {
     idList: "60b3aa24124c475b5be6ca9c",
     name: createTrelloCardName(shopifyOrder),
-    desc: createTrelloCardDesc(shopifyOrder.line_items || []),
     pos: "bottom",
   });
+
+  const checklist = await client.post("/checklists", {
+    idCard: card.data.id,
+    name: "Order Items",
+    pos: "bottom",
+  });
+
+  await Promise.all(
+    shopifyOrder.line_items?.map(async (lineItem) => {
+      await client.post(`/checklists/${checklist.data.id}/checkItems`, {
+        id: checklist.data.id,
+        name: `${lineItem.quantity} x ${lineItem.name}`,
+        pos: "bottom",
+      });
+    }) ?? []
+  );
 
   return {
     statusCode: 200,
