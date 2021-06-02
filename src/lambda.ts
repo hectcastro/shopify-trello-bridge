@@ -20,7 +20,7 @@ export const handler: APIGatewayProxyHandlerV2 = async (
   const shopifyOrder: Order = JSON.parse(event.body ?? "");
 
   const card = await client.post("/cards", {
-    idList: "60b3aa24124c475b5be6ca9c",
+    idList: process.env.TRELLO_LIST_ID,
     name: createTrelloCardName(shopifyOrder),
     pos: "bottom",
   });
