@@ -1,7 +1,7 @@
 import { APIGatewayProxyEventV2, APIGatewayProxyHandlerV2 } from "aws-lambda";
-import { Order } from "./model/order";
 import axios from "axios";
 import crypto from "crypto";
+import { Order } from "./model/order";
 
 const TRELLO_OAUTH_TOKEN = process.env.TRELLO_OAUTH_TOKEN ?? "";
 const TRELLO_API_KEY = process.env.TRELLO_API_KEY ?? "";
