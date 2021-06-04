@@ -4,6 +4,9 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "@aws-cdk/core"
+        update-types: ["version-update:semver-minor"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
