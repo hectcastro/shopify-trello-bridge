@@ -6,12 +6,18 @@
     "start": "sst start",
     "build": "sst build",
     "deploy": "sst deploy",
-    "remove": "sst remove"
+    "remove": "sst remove",
+    "release": "standard-version",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@aws-cdk/assert": "1.105.0",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@types/aws-lambda": "^8.10.70",
-    "prettier": "^2.3.0"
+    "husky": "^6.0.0",
+    "prettier": "^2.3.0",
+    "standard-version": "^9.3.0"
   },
   "dependencies": {
     "@aws-cdk/core": "1.105.0",
