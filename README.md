@@ -1,45 +1,39 @@
-# Getting Started with Serverless Stack (SST)
+# shopify-trello-bridge
 
-This project was bootstrapped with [Create Serverless Stack](https://docs.serverless-stack.com/packages/create-serverless-stack).
+This is a [Serverless Stack](https://docs.serverless-stack.com) project to receive verified Shopify order creation webhooks and make Trello cards out of them. The stack consists of:
 
-Start by installing the dependencies.
+- An API Gateway endpoint to receive the webhook
+- A Lambda function to process the webhook payload
+- A set of Systems Manager Parameters to share secrets
+
+## Usage
+
+Start by installing the dependencies:
 
 ```bash
 $ npm install
 ```
 
-## Commands
+Then, start the local Lambda development environment:
 
-### `npm run start`
+```bash
+$ npm run start
+```
 
-Starts the local Lambda development environment.
+## Configuration
 
-### `npm run build`
+The Lambda function is configured via Systems Manager Parameters. Ensure that each of the following exists in the target AWS account parameter store prior to deploying the stack.
 
-Build your app and synthesize your stacks.
+- `/shopify-trello-bridge/trello/oauth-token`: Trello API OAuth token.
+- `/shopify-trello-bridge/trello/api-key`: Trello API key.
+- `/shopify-trello-bridge/trello/list-id`: Target Trello list ID for the card.
+- `/shopify-trello-bridge/shopify/webhook-secret`: Shopify webhook verification token.
 
-Generates a `.build/` directory with the compiled files and a `.build/cdk.out/` directory with the synthesized CloudFormation stacks.
+Using the AWS CLI, you can create these parameters with a command like:
 
-### `npm run deploy [stack]`
-
-Deploy all your stacks to AWS. Or optionally deploy a specific stack.
-
-### `npm run remove [stack]`
-
-Remove all your stacks and all of their resources from AWS. Or optionally remove a specific stack.
-
-### `npm run test`
-
-Runs your tests using Jest. Takes all the [Jest CLI options](https://jestjs.io/docs/en/cli).
-
-## Documentation
-
-Learn more about the Serverless Stack.
-
-- [Docs](https://docs.serverless-stack.com)
-- [@serverless-stack/cli](https://docs.serverless-stack.com/packages/cli)
-- [@serverless-stack/resources](https://docs.serverless-stack.com/packages/resources)
-
-## Community
-
-[Follow us on Twitter](https://twitter.com/ServerlessStack) or [post on our forums](https://discourse.serverless-stack.com).
+```bash
+$ aws ssm put-parameter \
+    --name "/shopify-trello-bridge/trello/list-id" \
+    --type "SecureString" \
+    --value "60b3da24124c475b5be6bg8d"
+```
