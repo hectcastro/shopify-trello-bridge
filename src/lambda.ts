@@ -2,6 +2,7 @@ import { APIGatewayProxyEventV2, APIGatewayProxyHandlerV2 } from "aws-lambda";
 import { ssmParameter } from "aws-parameter-cache";
 import axios from "axios";
 import crypto from "crypto";
+import bunyan from "bunyan";
 import { Order } from "./model/order";
 
 const TRELLO_OAUTH_TOKEN = ssmParameter({
@@ -25,6 +26,12 @@ const CLIENT = axios.create({
   baseURL: "https://api.trello.com/1",
 });
 
+const LOGGER = bunyan.createLogger({
+  name: "shopify-trello-bridge",
+  level: bunyan.INFO,
+  stream: process.stdout,
+});
+
 async function verifyWebhook(body: string, hmacSha: string): Promise<boolean> {
   const computedHmacSha = crypto
     .createHmac("sha256", (await SHOPIFY_WEBHOOK_SECRET.value) as string)
@@ -39,6 +46,8 @@ function createTrelloCardName(order: Order): string {
 }
 
 async function createTrelloCard(shopifyOrder: Order) {
+  LOGGER.info(shopifyOrder);
+
   const params = {
     key: await TRELLO_API_KEY.value,
     token: await TRELLO_OAUTH_TOKEN.value,

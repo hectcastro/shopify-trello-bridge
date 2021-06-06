@@ -15,6 +15,7 @@
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@types/aws-lambda": "^8.10.70",
+    "@types/bunyan": "^1.8.6",
     "husky": "^6.0.0",
     "prettier": "^2.3.0",
     "standard-version": "^9.3.0"
@@ -24,6 +25,7 @@
     "@serverless-stack/cli": "0.24.0",
     "@serverless-stack/resources": "0.24.0",
     "aws-parameter-cache": "^1.2.1",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "bunyan": "^1.8.15"
   }
 }
