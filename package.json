@@ -17,7 +17,7 @@
     "@types/aws-lambda": "^8.10.77",
     "@types/bunyan": "^1.8.6",
     "husky": "^6.0.0",
-    "prettier": "^2.3.1",
+    "prettier": "^2.3.2",
     "standard-version": "^9.3.0"
   },
   "dependencies": {
