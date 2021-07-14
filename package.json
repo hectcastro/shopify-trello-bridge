@@ -11,7 +11,7 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.105.0",
+    "@aws-cdk/assert": "1.111.0",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@types/aws-lambda": "^8.10.78",
@@ -21,7 +21,7 @@
     "standard-version": "^9.3.0"
   },
   "dependencies": {
-    "@aws-cdk/core": "1.105.0",
+    "@aws-cdk/core": "1.111.0",
     "@serverless-stack/cli": "0.32.1",
     "@serverless-stack/resources": "0.31.0",
     "aws-parameter-cache": "^1.2.1",
