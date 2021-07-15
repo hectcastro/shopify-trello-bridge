@@ -18,7 +18,7 @@
     "@types/bunyan": "^1.8.7",
     "husky": "^7.0.1",
     "prettier": "^2.3.2",
-    "standard-version": "^9.3.0"
+    "standard-version": "^9.3.1"
   },
   "dependencies": {
     "@aws-cdk/core": "1.111.0",
