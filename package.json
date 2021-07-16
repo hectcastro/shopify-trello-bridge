@@ -11,7 +11,7 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@aws-cdk/assert": "1.111.0",
+    "@aws-cdk/assert": "1.114.0",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@types/aws-lambda": "^8.10.79",
