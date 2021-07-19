@@ -23,7 +23,7 @@
   "dependencies": {
     "@aws-cdk/core": "1.111.0",
     "@serverless-stack/cli": "0.33.1",
-    "@serverless-stack/resources": "0.33.0",
+    "@serverless-stack/resources": "0.33.1",
     "aws-parameter-cache": "^1.2.1",
     "axios": "^0.21.1",
     "bunyan": "^1.8.15"
