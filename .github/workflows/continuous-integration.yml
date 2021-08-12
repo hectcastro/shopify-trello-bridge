@@ -21,7 +21,7 @@ jobs:
 
       - name: Download Earthly
         run: |
-          sudo wget https://github.com/earthly/earthly/releases/download/v0.5.18/earthly-linux-amd64 -O /usr/local/bin/earthly
+          sudo wget https://github.com/earthly/earthly/releases/download/v0.5.21/earthly-linux-amd64 -O /usr/local/bin/earthly
           sudo chmod +x /usr/local/bin/earthly
 
       - name: Install dependencies and build
