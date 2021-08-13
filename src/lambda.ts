@@ -1,9 +1,7 @@
 import { APIGatewayProxyEventV2, APIGatewayProxyHandlerV2 } from "aws-lambda";
 import { ssmParameter } from "aws-parameter-cache";
-import axios from "axios";
-import crypto from "crypto";
-import bunyan from "bunyan";
-import { Order } from "./model/order";
+import { createCard } from "./trello";
+import Shopify from "./services/shopify";
 
 const TRELLO_OAUTH_TOKEN = ssmParameter({
   name: "/shopify-trello-bridge/trello/oauth-token",
@@ -31,15 +29,6 @@ const LOGGER = bunyan.createLogger({
   level: bunyan.INFO,
   stream: process.stdout,
 });
-
-async function verifyWebhook(body: string, hmacSha: string): Promise<boolean> {
-  const computedHmacSha = crypto
-    .createHmac("sha256", (await SHOPIFY_WEBHOOK_SECRET.value) as string)
-    .update(body, "utf8")
-    .digest("base64");
-
-  return computedHmacSha == hmacSha;
-}
 
 function createTrelloCardName(order: Order): string {
   return `${order.name}: ${order.customer?.first_name} ${order.customer?.last_name} ($${order.total_price})`;
@@ -83,9 +72,10 @@ export const handler: APIGatewayProxyHandlerV2 = async (
   event: APIGatewayProxyEventV2
 ) => {
   if (
-    !(await verifyWebhook(
+    !(await Shopify.verifyWebhook(
       event.body ?? "",
-      event.headers["x-shopify-hmac-sha256"] ?? ""
+      event.headers["x-shopify-hmac-sha256"] ?? "",
+      (await SHOPIFY_WEBHOOK_SECRET.value) as string
     ))
   ) {
     return { statusCode: 401 };
