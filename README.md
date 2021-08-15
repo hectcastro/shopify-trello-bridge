@@ -1,6 +1,6 @@
 # shopify-trello-bridge
 
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/5095/badge)](https://bestpractices.coreinfrastructure.org/projects/5095)
+[![CI](https://github.com/hectcastro/shopify-trello-bridge/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/hectcastro/shopify-trello-bridge/actions/workflows/continuous-integration.yml) [![codecov](https://codecov.io/gh/hectcastro/shopify-trello-bridge/branch/main/graph/badge.svg?token=KCJ9OFBFFV)](https://codecov.io/gh/hectcastro/shopify-trello-bridge) [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/5095/badge)](https://bestpractices.coreinfrastructure.org/projects/5095) 
 
 This is a [Serverless Stack](https://docs.serverless-stack.com) project to receive verified Shopify order creation webhooks and make Trello cards out of them. The stack consists of:
 
