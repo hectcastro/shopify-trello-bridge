@@ -26,4 +26,10 @@ jobs:
 
       - name: Install dependencies and build
         run: |
-          earthly +build
+          earthly +test
+
+      - uses: codecov/codecov-action@v2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: ./coverage
+          fail_ci_if_error: true
