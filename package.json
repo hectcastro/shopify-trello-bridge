@@ -21,7 +21,7 @@
     "@aws-cdk/assert": "1.111.0",
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",
-    "@types/aws-lambda": "^8.10.82",
+    "@types/aws-lambda": "^8.10.83",
     "@types/bunyan": "^1.8.7",
     "husky": "^7.0.1",
     "prettier": "^2.3.2",
