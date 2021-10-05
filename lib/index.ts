@@ -6,6 +6,7 @@ export default function main(app: sst.App): void {
   app.setDefaultFunctionProps({
     runtime: lambda.Runtime.NODEJS_14_X,
     timeout: 15,
+    architectures: [lambda.Architecture.ARM_64],
   });
 
   new MyStack(app, "my-stack");
