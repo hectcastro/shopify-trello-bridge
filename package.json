@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@aws-cdk/core": "1.124.0",
-    "@serverless-stack/cli": "0.44.1",
+    "@serverless-stack/cli": "0.45.0",
     "@serverless-stack/resources": "0.44.1",
     "aws-parameter-cache": "^1.2.1",
     "axios": "^0.21.4",
