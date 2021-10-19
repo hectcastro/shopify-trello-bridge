@@ -11,6 +11,11 @@
     "release": "standard-version",
     "prepare": "husky install"
   },
+  "eslintConfig": {
+    "extends": [
+      "serverless-stack"
+    ]
+  },
   "jest": {
     "collectCoverageFrom": [
       "./src/**/*.{js,jsx,ts,tsx}",
