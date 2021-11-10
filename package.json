@@ -37,7 +37,7 @@
     "@aws-sdk/client-secrets-manager": "^3.40.0",
     "@aws-sdk/client-ssm": "^3.40.0",
     "@serverless-stack/cli": "0.50.2",
-    "@serverless-stack/resources": "0.50.2",
+    "@serverless-stack/resources": "0.50.3",
     "aws-parameter-cache": "^2.0.6",
     "axios": "^0.21.4",
     "bunyan": "^1.8.15"
