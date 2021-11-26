@@ -29,7 +29,7 @@
     "@types/aws-lambda": "^8.10.85",
     "@types/bunyan": "^1.8.8",
     "husky": "^7.0.4",
-    "prettier": "^2.4.1",
+    "prettier": "^2.5.0",
     "standard-version": "^9.3.2"
   },
   "dependencies": {
