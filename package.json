@@ -36,7 +36,7 @@
     "@aws-cdk/core": "1.132.0",
     "@aws-sdk/client-secrets-manager": "^3.46.0",
     "@aws-sdk/client-ssm": "^3.46.0",
-    "@serverless-stack/cli": "0.56.2",
+    "@serverless-stack/cli": "0.57.2",
     "@serverless-stack/resources": "0.56.2",
     "aws-parameter-cache": "^2.0.14",
     "axios": "^0.24.0",
