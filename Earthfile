@@ -4,6 +4,7 @@ WORKDIR /app
 
 deps:
     COPY package.json package-lock.json ./
+    RUN npm i -g npm@8
     RUN npm ci
     SAVE ARTIFACT package-lock.json AS LOCAL ./package-lock.json
 
