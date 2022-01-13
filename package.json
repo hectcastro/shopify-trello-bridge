@@ -33,7 +33,7 @@
     "standard-version": "^9.3.2"
   },
   "dependencies": {
-    "@aws-cdk/core": "1.138.0",
+    "@aws-cdk/core": "1.138.2",
     "@aws-sdk/client-secrets-manager": "^3.46.0",
     "@aws-sdk/client-ssm": "^3.46.0",
     "@serverless-stack/cli": "0.58.0",
