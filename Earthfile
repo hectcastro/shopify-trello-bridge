@@ -12,14 +12,14 @@ build:
     FROM +deps
     COPY tsconfig.json sst.json ./
     COPY src src
-    COPY lib lib
+    COPY stacks stacks
     RUN npm run build
 
 test:
     FROM +deps
     COPY tsconfig.json sst.json ./
     COPY src src
-    COPY lib lib
+    COPY stacks stacks
     COPY tests tests
     RUN npm run test
     SAVE ARTIFACT coverage /coverage AS LOCAL coverage
