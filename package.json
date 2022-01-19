@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@serverless-stack/cli": "0.59.4",
-    "@serverless-stack/resources": "0.59.4",
+    "@serverless-stack/resources": "0.60.2",
     "aws-cdk-lib": "2.8.0",
     "aws-parameter-cache": "^2.0.14",
     "@aws-sdk/client-secrets-manager": "^3.47.0",
