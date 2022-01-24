@@ -35,7 +35,7 @@
     "@serverless-stack/resources": "0.60.4",
     "aws-cdk-lib": "2.8.0",
     "aws-parameter-cache": "^2.0.14",
-    "@aws-sdk/client-secrets-manager": "^3.47.1",
+    "@aws-sdk/client-secrets-manager": "^3.48.0",
     "@aws-sdk/client-ssm": "^3.48.0",
     "axios": "^0.25.0",
     "bunyan": "^1.8.15",
