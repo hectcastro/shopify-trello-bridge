@@ -31,7 +31,7 @@
     "standard-version": "^9.3.2"
   },
   "dependencies": {
-    "@serverless-stack/cli": "0.61.1",
+    "@serverless-stack/cli": "0.61.2",
     "@serverless-stack/resources": "0.61.2",
     "aws-cdk-lib": "2.10.0",
     "aws-parameter-cache": "^2.0.14",
