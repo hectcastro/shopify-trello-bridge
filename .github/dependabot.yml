@@ -5,7 +5,7 @@ updates:
     schedule:
       interval: "daily"
     ignore:
-      - dependency-name: "@aws-cdk/core"
+      - dependency-name: "aws-cdk-lib"
         update-types: ["version-update:semver-minor"]
 
   - package-ecosystem: "github-actions"
