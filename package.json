@@ -5,30 +5,26 @@
   "scripts": {
     "start": "sst start",
     "build": "sst build",
-    "test": "sst test --coverage",
+    "lint": "eslint src stacks tests",
+    "test": "jest --coverage",
     "deploy": "sst deploy",
     "remove": "sst remove",
     "release": "standard-version",
     "prepare": "husky install"
   },
-  "eslintConfig": {
-    "extends": [
-      "serverless-stack"
-    ]
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "./src/**/*.{js,jsx,ts,tsx}",
-      "!./src/lambda.ts"
-    ]
-  },
   "devDependencies": {
     "@commitlint/cli": "^16.2.4",
     "@commitlint/config-conventional": "^16.2.4",
     "@types/bunyan": "^1.8.8",
+    "@types/jest": "^27.5.0",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "eslint": "^8.14.0",
     "husky": "^7.0.4",
+    "jest": "^28.0.3",
     "prettier": "^2.6.2",
-    "standard-version": "^9.3.2"
+    "standard-version": "^9.3.2",
+    "ts-jest": "^28.0.1"
   },
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.82.0",

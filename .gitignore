@@ -12,6 +12,8 @@
 # typescript
 *.js
 !commitlint.config.js
+!.eslintrc.js
+!jest.config.js
 *.d.ts
 
 # misc
