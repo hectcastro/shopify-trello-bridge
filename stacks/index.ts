@@ -3,7 +3,7 @@ import MyStack from "./MyStack";
 
 export default function main(app: sst.App): void {
   app.setDefaultFunctionProps({
-    runtime: "nodejs14.x",
+    runtime: "nodejs16.x",
     timeout: 15,
     architecture: "arm_64",
   });
