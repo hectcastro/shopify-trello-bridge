@@ -31,7 +31,7 @@
     "@aws-sdk/client-ssm": "^3.87.0",
     "@serverless-stack/cli": "1.1.1",
     "@serverless-stack/resources": "1.1.1",
-    "aws-cdk-lib": "2.24.0",
+    "aws-cdk-lib": "2.24.1",
     "aws-parameter-cache": "^2.0.14",
     "axios": "^0.27.2",
     "bunyan": "^1.8.15",
