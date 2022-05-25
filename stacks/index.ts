@@ -5,6 +5,7 @@ export default function main(app: sst.App): void {
   app.setDefaultFunctionProps({
     runtime: "nodejs16.x",
     timeout: 15,
+    memorySize: 128,
     architecture: "arm_64",
   });
 
