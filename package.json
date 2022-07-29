@@ -29,7 +29,7 @@
   "dependencies": {
     "@aws-sdk/client-secrets-manager": "^3.137.0",
     "@aws-sdk/client-ssm": "^3.138.0",
-    "@serverless-stack/cli": "1.6.2",
+    "@serverless-stack/cli": "1.6.4",
     "@serverless-stack/resources": "1.6.4",
     "aws-cdk-lib": "2.32.1",
     "aws-parameter-cache": "^2.0.14",
