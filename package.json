@@ -27,7 +27,7 @@
     "ts-jest": "^28.0.7"
   },
   "dependencies": {
-    "@aws-sdk/client-secrets-manager": "^3.137.0",
+    "@aws-sdk/client-secrets-manager": "^3.141.0",
     "@aws-sdk/client-ssm": "^3.141.0",
     "@serverless-stack/cli": "1.6.4",
     "@serverless-stack/resources": "1.6.6",
