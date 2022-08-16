@@ -1,54 +1,45 @@
-import axios, { AxiosInstance } from "axios";
-import bunyan from "bunyan";
-import { LineItemsEntity, Order } from "../models/shopify";
+import { Logger } from "@aws-lambda-powertools/logger";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import { LineItem, Order } from "../models/shopify";
 
-const logger = bunyan.createLogger({
-  name: "shopify-trello-bridge",
-  level: bunyan.INFO,
-  stream: process.stdout,
-});
+const logger = new Logger({ serviceName: "shopifyTrelloBridge" });
 
-export default class Trello {
-  private static instance: Trello;
-  private static httpClient: AxiosInstance;
+export class TrelloClient {
+  private httpClient: AxiosInstance;
 
-  static client(key: string, token: string): Trello {
-    if (!Trello.instance) {
-      Trello.instance = new Trello();
+  constructor(key: string, token: string) {
+    this.httpClient = axios.create({
+      baseURL: "https://api.trello.com/1",
+    });
 
-      Trello.httpClient = axios.create({
-        baseURL: "https://api.trello.com/1",
-      });
+    this.httpClient.interceptors.request.use((config: AxiosRequestConfig) => {
+      config.params = config.params || {};
+      config.params["key"] = key;
+      config.params["token"] = token;
 
-      Trello.httpClient.interceptors.request.use((config) => {
-        config.params = config.params || {};
-        config.params["key"] = key;
-        config.params["token"] = token;
-
-        return config;
-      });
-    }
-
-    return Trello.instance;
+      return config;
+    });
   }
 
-  cardName(order: Omit<Order, "lineItems">): string {
-    return `${order.name}: ${order.customer?.first_name} ${order.customer?.last_name} ($${order.total_price})`;
+  cardName(order: Order): string {
+    return `${order.name}: ${order.customer.firstName} ${order.customer.lastName} ($${order.totalPrice})`;
   }
 
   async createCardChecklist(
     cardId: string,
-    lineItems: LineItemsEntity[] | null | undefined
+    lineItems: LineItem[]
   ): Promise<void> {
-    const checklist = await Trello.httpClient.post("/checklists", {
+    const checklist = await this.httpClient.post("/checklists", {
       idCard: cardId,
       name: "Order Items",
       pos: "bottom",
     });
 
     await Promise.all(
-      lineItems?.map(async (lineItem) => {
-        await Trello.httpClient.post(
+      lineItems.map(async (lineItem: LineItem) => {
+        logger.info(`Creating checklist item: ${lineItem.name}`);
+
+        await this.httpClient.post(
           `/checklists/${checklist.data.id}/checkItems`,
           {
             id: checklist.data.id,
@@ -56,19 +47,20 @@ export default class Trello {
             pos: "bottom",
           }
         );
-      }) ?? []
+      })
     );
   }
 
   async createCard(listId: string, order: Order): Promise<void> {
-    logger.info(order);
-
-    const card = await Trello.httpClient.post("/cards", {
+    const cardName = this.cardName(order);
+    const card = await this.httpClient.post("/cards", {
       idList: listId,
-      name: this.cardName(order),
+      name: cardName,
       pos: "bottom",
     });
 
-    await this.createCardChecklist(card.data.id, order.line_items);
+    logger.info(`Created card: ${cardName}`);
+
+    await this.createCardChecklist(card.data.id, order.lineItems);
   }
 }

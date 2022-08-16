@@ -1,16 +1,16 @@
-export interface Order {
+export type Order = {
   customer: Customer;
-  line_items?: LineItemsEntity[] | null;
+  lineItems: LineItem[];
   name: string;
-  total_price: string;
-}
+  totalPrice: string;
+};
 
-export interface LineItemsEntity {
+export type LineItem = {
   name: string;
   quantity: number;
-}
+};
 
-export interface Customer {
-  first_name: string;
-  last_name: string;
-}
+export type Customer = {
+  firstName: string;
+  lastName: string;
+};

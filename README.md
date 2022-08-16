@@ -2,10 +2,9 @@
 
 [![CI](https://github.com/hectcastro/shopify-trello-bridge/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/hectcastro/shopify-trello-bridge/actions/workflows/continuous-integration.yml) [![codecov](https://codecov.io/gh/hectcastro/shopify-trello-bridge/branch/main/graph/badge.svg?token=KCJ9OFBFFV)](https://codecov.io/gh/hectcastro/shopify-trello-bridge) [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/5095/badge)](https://bestpractices.coreinfrastructure.org/projects/5095) 
 
-This is a [Serverless Stack](https://docs.serverless-stack.com) project to receive verified Shopify order creation webhooks and make Trello cards out of them. The stack consists of:
+This is a [CDK](https://github.com/aws/aws-cdk) project to receive verified Shopify order creation webhooks and make Trello cards out of them. The stack consists of:
 
-- An API Gateway endpoint to receive the webhook
-- A Lambda function to process the webhook payload
+- A Lambda function URL to receive and process the webhook
 - A set of Systems Manager Parameters to share secrets
 
 ## Usage
@@ -19,12 +18,12 @@ $ npm install
 Then, start the local Lambda development environment:
 
 ```bash
-$ npm run start
+$ npm run cdk watch
 ```
 
 ## Configuration
 
-The Lambda function is configured via Systems Manager Parameters. Ensure that each of the following exists in the target AWS account parameter store prior to deploying the stack.
+The Lambda function is configured via Systems Manager Parameters. Ensure that each of the following exists in the target AWS account parameter store before deploying the stack.
 
 - `/shopify-trello-bridge/trello/oauth-token`: Trello API OAuth token.
 - `/shopify-trello-bridge/trello/api-key`: Trello API key.

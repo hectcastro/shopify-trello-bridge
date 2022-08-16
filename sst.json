@@ -1,7 +1,0 @@
-{
-  "name": "shopify-trello-bridge",
-  "region": "us-east-1",
-  "main": "stacks/index.ts",
-  "lint": true,
-  "typeCheck": true
-}
