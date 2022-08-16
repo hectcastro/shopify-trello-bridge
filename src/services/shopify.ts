@@ -1,11 +1,11 @@
-import crypto from "crypto";
+import * as crypto from "crypto";
 
-export default class Shopify {
-  static async verifyWebhook(
+export class Shopify {
+  static verifyWebhook(
     body: string,
     hmacSha: string,
     webhookSecret: string
-  ): Promise<boolean> {
+  ): boolean {
     const computedHmacSha = crypto
       .createHmac("sha256", webhookSecret)
       .update(body, "utf8")

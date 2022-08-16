@@ -1,4 +1,4 @@
-import Shopify from "../../src/services/shopify";
+import { Shopify } from "../../src/services/shopify";
 
 describe("verifyWebhook", () => {
   const webhookPayload = JSON.stringify({});

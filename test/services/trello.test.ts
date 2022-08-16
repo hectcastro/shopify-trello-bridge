@@ -1,15 +1,15 @@
 import { Order } from "../../src/models/shopify";
-import Trello from "../../src/services/trello";
+import { TrelloClient } from "../../src/services/trello";
 
-describe("Trello", () => {
-  const trelloClient = Trello.client("fake-key", "fake-token");
+describe("TrelloClient", () => {
+  const trelloClient = new TrelloClient("fake-key", "fake-token");
   const order = {
     name: "#1775",
     customer: {
-      first_name: "John",
-      last_name: "Doe",
+      firstName: "John",
+      lastName: "Doe",
     },
-    total_price: "101.91",
+    totalPrice: "101.91",
   } as Order;
 
   it("should create a card name", () => {
