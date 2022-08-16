@@ -23,9 +23,11 @@ jobs:
             fix
             refactor
             test
+            chore
           scopes: |
             cmd
             deps
+            deps-dev
           requireScope: false
           validateSingleCommit: true
           validateSingleCommitMatchesPrTitle: true
