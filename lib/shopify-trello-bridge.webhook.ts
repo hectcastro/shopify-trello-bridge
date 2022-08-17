@@ -20,8 +20,8 @@ const trelloListId = "/shopify-trello-bridge/trello/list-id";
 async function getParameterValue(
   paramName: string,
   params: Parameter[] | undefined
-): Promise<string | undefined> {
-  return await params?.find((param) => param.Name === paramName)?.Value;
+): Promise<string> {
+  return (await params?.find((param) => param.Name === paramName)?.Value) ?? "";
 }
 
 export const handler = async (event: APIGatewayEvent) => {
@@ -43,19 +43,19 @@ export const handler = async (event: APIGatewayEvent) => {
     !Shopify.verifyWebhook(
       event.body ?? "",
       event.headers["x-shopify-hmac-sha256"] ?? "",
-      (await getParameterValue(shopifyWebhookSecret, params.Parameters)) ?? ""
+      await getParameterValue(shopifyWebhookSecret, params.Parameters)
     )
   ) {
     return { statusCode: 401 };
   }
 
   const trelloClient = new TrelloClient(
-    (await getParameterValue(trelloApiKey, params.Parameters)) ?? "",
-    (await getParameterValue(trelloOauthToken, params.Parameters)) ?? ""
+    await getParameterValue(trelloApiKey, params.Parameters),
+    await getParameterValue(trelloOauthToken, params.Parameters)
   );
 
   await trelloClient.createCard(
-    (await getParameterValue(trelloListId, params.Parameters)) ?? "",
+    await getParameterValue(trelloListId, params.Parameters),
     camelcaseKeys(JSON.parse(event.body ?? ""), { deep: true })
   );
 
