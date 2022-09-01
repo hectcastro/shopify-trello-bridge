@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "lint": "eslint --ext ts .",
+    "lint": "xo",
     "test": "jest --coverage",
     "cdk": "cdk"
   },
@@ -18,20 +18,16 @@
     "@types/jest": "^27.5.2",
     "@types/node": "18.7.14",
     "@types/prettier": "2.7.0",
-    "@typescript-eslint/eslint-plugin": "^5.36.1",
-    "@typescript-eslint/parser": "^5.36.1",
     "aws-cdk": "2.39.1",
     "axios-mock-adapter": "^1.21.2",
     "esbuild": "^0.15.6",
-    "eslint": "^8.23.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.1",
     "jest": "^27.5.1",
     "prettier": "^2.7.1",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.9.1",
-    "typescript": "~3.9.7"
+    "typescript": "~3.9.7",
+    "xo": "^0.52.3"
   },
   "dependencies": {
     "@aws-lambda-powertools/logger": "^1.2.1",
@@ -41,5 +37,22 @@
     "camelcase-keys": "^8.0.2",
     "constructs": "^10.1.92",
     "source-map-support": "^0.5.21"
+  },
+  "xo": {
+    "envs": [
+      "es2018",
+      "node"
+    ],
+    "ignore": [
+      "*.config.js"
+    ],
+    "space": true,
+    "rules": {
+      "import/extensions": "off",
+      "n/file-extension-in-import": "off",
+      "no-new": "off",
+      "@typescript-eslint/naming-convention": "off"
+    },
+    "prettier": true
   }
 }

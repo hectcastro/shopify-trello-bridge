@@ -1,16 +1,12 @@
-import * as crypto from "crypto";
+import * as crypto from 'node:crypto';
 
-export class Shopify {
-  static verifyWebhook(
-    body: string,
-    hmacSha: string,
-    webhookSecret: string
-  ): boolean {
+export const Shopify = {
+  verifyWebhook(body: string, hmacSha: string, webhookSecret: string): boolean {
     const computedHmacSha = crypto
-      .createHmac("sha256", webhookSecret)
-      .update(body, "utf8")
-      .digest("base64");
+      .createHmac('sha256', webhookSecret)
+      .update(body, 'utf8')
+      .digest('base64');
 
-    return computedHmacSha == hmacSha;
-  }
-}
+    return computedHmacSha === hmacSha;
+  },
+};

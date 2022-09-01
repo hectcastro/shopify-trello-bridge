@@ -1,21 +1,22 @@
-import { Logger } from "@aws-lambda-powertools/logger";
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import { LineItem, Order } from "../models/shopify";
+import {Logger} from '@aws-lambda-powertools/logger';
+import type {AxiosInstance, AxiosRequestConfig} from 'axios';
+import axios from 'axios';
+import type {LineItem, Order} from '../models/shopify';
 
-const logger = new Logger({ serviceName: "shopifyTrelloBridge" });
+const logger = new Logger({serviceName: 'shopifyTrelloBridge'});
 
 export class TrelloClient {
-  private httpClient: AxiosInstance;
+  private readonly httpClient: AxiosInstance;
 
   constructor(key: string, token: string) {
     this.httpClient = axios.create({
-      baseURL: "https://api.trello.com/1",
+      baseURL: 'https://api.trello.com/1',
     });
 
     this.httpClient.interceptors.request.use((config: AxiosRequestConfig) => {
-      config.params = config.params || {};
-      config.params["key"] = key;
-      config.params["token"] = token;
+      config.params = (config.params as unknown) || {};
+      config.params.key = key;
+      config.params.token = token;
 
       return config;
     });
@@ -27,13 +28,16 @@ export class TrelloClient {
 
   async createCardChecklist(
     cardId: string,
-    lineItems: LineItem[]
+    lineItems: LineItem[],
   ): Promise<void> {
-    const checklist = await this.httpClient.post("/checklists", {
-      idCard: cardId,
-      name: "Order Items",
-      pos: "bottom",
-    });
+    const checklist: {data: {id: number}} = await this.httpClient.post(
+      '/checklists',
+      {
+        idCard: cardId,
+        name: 'Order Items',
+        pos: 'bottom',
+      },
+    );
 
     await Promise.all(
       lineItems.map(async (lineItem: LineItem) => {
@@ -44,19 +48,19 @@ export class TrelloClient {
           {
             id: checklist.data.id,
             name: `${lineItem.quantity} x ${lineItem.name}`,
-            pos: "bottom",
-          }
+            pos: 'bottom',
+          },
         );
-      })
+      }),
     );
   }
 
   async createCard(listId: string, order: Order): Promise<void> {
     const cardName = this.cardName(order);
-    const card = await this.httpClient.post("/cards", {
+    const card = await this.httpClient.post('/cards', {
       idList: listId,
       name: cardName,
-      pos: "bottom",
+      pos: 'bottom',
     });
 
     logger.info(`Created card: ${cardName}`);
