@@ -27,7 +27,7 @@
     "ts-jest": "^27.1.4",
     "ts-node": "^10.9.1",
     "typescript": "~3.9.7",
-    "xo": "^0.52.3"
+    "xo": "^0.52.4"
   },
   "dependencies": {
     "@aws-lambda-powertools/logger": "^1.2.1",
