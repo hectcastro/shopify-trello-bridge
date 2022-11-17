@@ -7,5 +7,8 @@ module.exports = {
   },
   collectCoverageFrom: [
     './src/**/*.{js,jsx,ts,tsx}',
-  ]
+  ],
+  moduleNameMapper: {
+    '^axios$': require.resolve('axios'),
+  }
 };
