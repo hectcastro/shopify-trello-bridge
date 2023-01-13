@@ -12,7 +12,7 @@
     "cdk": "cdk"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.4.1",
+    "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.0",
     "@types/aws-lambda": "^8.10.109",
     "@types/jest": "^27.5.2",
