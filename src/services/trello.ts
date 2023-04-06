@@ -65,6 +65,6 @@ export class TrelloClient {
 
     logger.info(`Created card: ${cardName}`);
 
-    await this.createCardChecklist(card.data.id, order.lineItems);
+    await this.createCardChecklist(card.data.id as string, order.lineItems);
   }
 }
