@@ -3,6 +3,7 @@ import type {Parameter} from '@aws-sdk/client-ssm';
 import {GetParametersCommand, SSMClient} from '@aws-sdk/client-ssm';
 import type {APIGatewayEvent} from 'aws-lambda';
 import camelcaseKeys from 'camelcase-keys';
+import type {Order} from '../src/models/shopify';
 import {Shopify} from '../src/services/shopify';
 import {TrelloClient} from '../src/services/trello';
 
@@ -56,7 +57,7 @@ export const handler = async (event: APIGatewayEvent) => {
 
   await trelloClient.createCard(
     await getParameterValue(trelloListId, parameters.Parameters),
-    camelcaseKeys(JSON.parse(event.body ?? ''), {deep: true}),
+    camelcaseKeys(JSON.parse(event.body ?? '') as Order, {deep: true}),
   );
 
   return {statusCode: 200};
