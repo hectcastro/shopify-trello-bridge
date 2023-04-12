@@ -35,7 +35,7 @@
     "aws-cdk-lib": "2.73.0",
     "axios": "1.2.x",
     "camelcase-keys": "^8.0.2",
-    "constructs": "^10.1.307",
+    "constructs": "^10.1.308",
     "source-map-support": "^0.5.21"
   },
   "overrides": {
