@@ -15,7 +15,7 @@ export class ShopifyTrelloBridge extends Construct {
     const webhookHandler = new NodejsFunction(this, 'webhook', {
       architecture: Architecture.ARM_64,
       runtime: Runtime.NODEJS_16_X,
-      timeout: Duration.seconds(5),
+      timeout: Duration.seconds(10),
     });
 
     webhookHandler.addToRolePolicy(
