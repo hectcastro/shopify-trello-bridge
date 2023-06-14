@@ -19,7 +19,7 @@
     "@types/node": "20.3.1",
     "@types/prettier": "2.7.3",
     "aws-cdk": "2.83.1",
-    "axios-mock-adapter": "^1.21.2",
+    "axios-mock-adapter": "^1.21.5",
     "esbuild": "^0.18.2",
     "husky": "^8.0.3",
     "jest": "^29.0.5",
