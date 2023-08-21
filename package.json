@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@aws-lambda-powertools/logger": "^1.12.1",
-    "@aws-sdk/client-ssm": "^3.391.0",
+    "@aws-sdk/client-ssm": "^3.395.0",
     "aws-cdk-lib": "2.92.0",
     "axios": "1.2.x",
     "camelcase-keys": "^9.0.0",
