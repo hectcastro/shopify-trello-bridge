@@ -33,7 +33,7 @@
     "@aws-lambda-powertools/logger": "^1.13.1",
     "@aws-sdk/client-ssm": "^3.419.0",
     "aws-cdk-lib": "2.98.0",
-    "axios": "1.2.x",
+    "axios": "1.5.x",
     "camelcase-keys": "^9.0.0",
     "constructs": "^10.2.70",
     "source-map-support": "^0.5.21"
