@@ -15,7 +15,7 @@
     "@commitlint/cli": "^17.8.0",
     "@commitlint/config-conventional": "^17.8.0",
     "@types/aws-lambda": "^8.10.125",
-    "@types/jest": "^29.5.5",
+    "@types/jest": "^29.5.6",
     "@types/node": "20.8.7",
     "@types/prettier": "2.7.3",
     "aws-cdk": "2.101.1",
