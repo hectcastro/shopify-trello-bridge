@@ -14,7 +14,7 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.2",
     "@commitlint/config-conventional": "^18.4.2",
-    "@types/aws-lambda": "^8.10.126",
+    "@types/aws-lambda": "^8.10.129",
     "@types/jest": "^29.5.9",
     "@types/node": "20.9.3",
     "@types/prettier": "3.0.0",
