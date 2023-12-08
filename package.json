@@ -16,7 +16,7 @@
     "@commitlint/config-conventional": "^18.4.3",
     "@types/aws-lambda": "^8.10.130",
     "@types/jest": "^29.5.11",
-    "@types/node": "20.10.3",
+    "@types/node": "20.10.4",
     "@types/prettier": "3.0.0",
     "aws-cdk": "2.114.1",
     "axios-mock-adapter": "^1.22.0",
