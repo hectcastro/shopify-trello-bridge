@@ -1,6 +1,5 @@
 import {Logger} from '@aws-lambda-powertools/logger';
-import type {AxiosInstance, AxiosRequestConfig} from 'axios';
-import axios from 'axios';
+import axios, {type AxiosInstance, type AxiosRequestConfig} from 'axios';
 import type {LineItem, Order} from '../models/shopify';
 
 const logger = new Logger({serviceName: 'shopifyTrelloBridge'});
