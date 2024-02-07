@@ -1,6 +1,9 @@
 import {Logger} from '@aws-lambda-powertools/logger';
-import type {Parameter} from '@aws-sdk/client-ssm';
-import {GetParametersCommand, SSMClient} from '@aws-sdk/client-ssm';
+import {
+  GetParametersCommand,
+  SSMClient,
+  type Parameter,
+} from '@aws-sdk/client-ssm';
 import type {APIGatewayEvent} from 'aws-lambda';
 import camelcaseKeys from 'camelcase-keys';
 import type {Order} from '../src/models/shopify';
