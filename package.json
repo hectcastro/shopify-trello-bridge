@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.2",
-    "@commitlint/config-conventional": "^19.1.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/aws-lambda": "^8.10.137",
     "@types/jest": "^29.5.12",
     "@types/node": "20.12.7",
