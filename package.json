@@ -30,7 +30,7 @@
     "xo": "^0.59.3"
   },
   "dependencies": {
-    "@aws-lambda-powertools/logger": "^2.6.0",
+    "@aws-lambda-powertools/logger": "^2.7.0",
     "@aws-sdk/client-ssm": "^3.624.0",
     "aws-cdk-lib": "2.151.0",
     "axios": "1.2.x",
